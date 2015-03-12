@@ -35,7 +35,8 @@ class Client:
     except Exception as pro:
       raise BitPayConnectionError('Connection refused')
     if response.ok:
-      return response.json()
+      self.tokens = self.token_from_response(response.json())
+      return response.json()['data'][0]['pairingCode']
     self.response_error(response)
 
   def create_invoice(self, params):

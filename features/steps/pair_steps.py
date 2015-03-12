@@ -7,6 +7,7 @@ import six
 import json
 from bitpay_client import Client
 import bitpay_key_utils as key_utils
+import re
 
 ROOT_ADDRESS = os.environ['RCROOTADDRESS']
 USER_NAME = os.environ['RCTESTUSER']
@@ -23,6 +24,17 @@ def step_impl(context):
   client = Client(api_uri=ROOT_ADDRESS, insecure=True, pem=PEM)
   client.pair_pos_client(claim_code)
   assert client.tokens['pos']
+
+@given(u'the user requests a client-side pairing')
+def step_impl(context):
+  global pairing_code
+  time.sleep(0.5)
+  client = Client(api_uri=ROOT_ADDRESS, insecure=True, pem=PEM)
+  pairing_code = client.create_token("merchant")
+
+@then(u'they will receive a claim code')
+def step_impl(context):
+  assert re.match("^\w{7,7}$", pairing_code) != None 
 
 @then(u'the user is paired with BitPay')
 def step_impl(context):
