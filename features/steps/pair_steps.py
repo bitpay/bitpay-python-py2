@@ -19,6 +19,7 @@ exception = None
 
 @given(u'the user pairs with BitPay with a valid pairing code')
 def step_impl(context):
+  time.sleep(1)
   claim_code = get_claim_code_from_server()
   global client
   client = Client(api_uri=ROOT_ADDRESS, insecure=True, pem=PEM)
@@ -71,6 +72,10 @@ def step_impl(context):
   global client
   client = client_from_stored_values()
   assert client.verify_tokens()
+
+@then(u'the user waits {wait:d} seconds')
+def step_impl(context, wait):
+  time.sleep(wait)
 
 @when(u'the user creates an invoice for {amount:f} {currency} with float input')
 def step_impl(context, amount, currency):
