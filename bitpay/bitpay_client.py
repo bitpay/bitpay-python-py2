@@ -27,6 +27,18 @@ class Client:
       return self.tokens 
     self.response_error(response)
 
+  def create_token(self, facade):
+    payload = {'id': self.client_id, 'facade': facade}
+    headers = {"content-type": "application/json", "accept": "application/json", "X-accept-version": "2.0.0"}
+    try:
+      response = requests.post(self.uri + "/tokens", verify=self.verify, data=json.dumps(payload), headers=headers)
+    except Exception as pro:
+      raise BitPayConnectionError('Connection refused')
+    if response.ok:
+      self.tokens = self.token_from_response(response.json())
+      return response.json()['data'][0]['pairingCode']
+    self.response_error(response)
+
   def create_invoice(self, params):
     self.verify_invoice_params(params['price'], params['currency'])
     payload = json.dumps(params)
