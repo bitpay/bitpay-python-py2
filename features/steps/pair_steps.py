@@ -63,6 +63,22 @@ def step_impl(context):
     global exception
     exception = error
 
+@given(u'that a user knows an invoice id')
+def step_impl(context):
+  global client
+  global invoice
+  client = client_from_stored_values()
+  create_invoice(10, "USD")
+
+@then(u'they can retrieve that invoice')
+def step_impl(context):
+  global client 
+  global invoice
+  amount = invoice['price']
+  invoice_id = invoice['id']
+  retrieved_invoice = client.get_invoice(invoice_id)
+  assert amount == retrieved_invoice['price']
+
 @then(u'they will receive a {error} matching {message}')
 def step_impl(context, error, message):
   assert exception.__class__.__name__ == error and exception.args[0] == message, "%s != %s" % (exception.args[0], message)
