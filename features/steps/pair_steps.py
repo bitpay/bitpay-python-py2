@@ -23,7 +23,12 @@ def step_impl(context):
   claim_code = get_claim_code_from_server()
   global client
   client = Client(api_uri=ROOT_ADDRESS, insecure=True, pem=PEM)
-  client.pair_pos_client(claim_code)
+  try: 
+    client.pair_pos_client(claim_code)
+  except Exception as error:
+    if error.args[0] == "500: Unable to create token because of too many requests.":
+      time.sleep(60)
+      client.pair_pos_client(claim_code)
   assert client.tokens['pos']
 
 @given(u'the user requests a client-side pairing')
@@ -31,7 +36,12 @@ def step_impl(context):
   global pairing_code
   time.sleep(1)
   client = Client(api_uri=ROOT_ADDRESS, insecure=True, pem=PEM)
-  pairing_code = client.create_token("merchant")
+  try:
+    pairing_code = client.create_token("merchant")
+  except Exception as error:
+    if error.args[0] == "500: Unable to create token because of too many requests.":
+      time.sleep(60)
+      pairing_code = client.create_token("merchant")
 
 @then(u'they will receive a claim code')
 def step_impl(context):
@@ -49,6 +59,13 @@ def step_impl(context, code, valid):
   except Exception as error:
     global exception
     exception = error
+  if exception.args[0] == "500: Unable to create token because of too many requests.":
+    time.sleep(60)
+    try: 
+      client.pair_pos_client(code)
+    except Exception as error:
+      global exception
+      exception = error
 
 @when(u'the user fails to pair with BitPay because of an incorrect port')
 def step_impl(context):
@@ -89,7 +106,7 @@ def step_impl(context):
   client = client_from_stored_values()
   assert client.verify_tokens()
 
-@then(u'the user waits {wait:d} seconds')
+@given(u'the user waits {wait:d} seconds')
 def step_impl(context, wait):
   time.sleep(wait)
 
@@ -157,6 +174,7 @@ def client_from_stored_values():
 def get_claim_code_from_server():
   browser = Browser('phantomjs', service_args=['--ignore-ssl-errors=true'])
   browser.visit(ROOT_ADDRESS + "/merchant-login")
+  time.sleep(5)
   browser.fill_form({"email": USER_NAME, "password": PASSWORD})
   browser.find_by_id("loginButton")[0].click()
   time.sleep(1)
