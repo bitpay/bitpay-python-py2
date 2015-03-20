@@ -7,7 +7,7 @@ You must have BitPay or test.bitpay merchant account to use this library. [Signi
 ## Quick Start
 ### Installation
 
-BitPay's python library was developed in Python 3.4.2. The recommended method of installion is using pip.
+BitPay's python library was developed in Python 2.7.8. The recommended method of installion is using pip.
 
 `pip install 'bitpay-py2'`
 
@@ -15,6 +15,11 @@ BitPay's python library was developed in Python 3.4.2. The recommended method of
 
 The bitpay library allows authenticating with BitPay, creating invoices, and retrieving invoices.
   
+add the "bitpay" folder to the Python path:
+
+    >>> import sys
+    >>> sys.path.append("bitpay")
+
 #### Pairing with Bitpay.com
 
 Before pairing with BitPay.com, you'll need to log in to your BitPay account and navigate to /api-tokens. Generate a new pairing code and use it in the next step. You can try out various functions using the Python REPL. In this example, it's assumed that we are working against the bitpay test server and have generated the pairing code "abcdefg".
