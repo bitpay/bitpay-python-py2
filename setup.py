@@ -3,12 +3,12 @@ from distutils.core import setup
 setup(
     name = "bitpay-py2",
     packages = ["bitpay"],
-    version = "2.3.0",
+    version = "2.3.1",
     description = "Accept bitcoin with BitPay",
     author = "Paul Daigle",
     author_email = "integrations@bitpay.com",
     url = "https://github.com/bitpay/bitpay-python",
-    download_url = "https://github.com/bitpay/bitpay-python-py2/tarball/v2.3.0",
+    download_url = "https://github.com/bitpay/bitpay-python-py2/tarball/v2.3.1",
     keywords = ["bitcoin", "payments", "crypto"],
     license = "MIT License",
     classifiers = [
