@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name = "bitpay-py2",
     packages = ["bitpay"],
-    version = "2.2.0",
+    version = "2.2.1",
     description = "Accept bitcoin with BitPay",
     author = "Paul Daigle",
     author_email = "integrations@bitpay.com",
@@ -36,7 +36,5 @@ all of the tools you need to use the BitPay API for other
 purposes.
 
 © 2015 BitPay, Inc.
-
-This version requires Python 3 or later; a Python 2 version is available separately.
 """
 )
