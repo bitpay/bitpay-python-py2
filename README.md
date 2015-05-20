@@ -8,6 +8,7 @@ Powerful, flexible, lightweight interface to the cryptographically secure BitPay
 [![Supported Python versions](https://pypip.in/py_versions/bitpay_py2/badge.svg?style=flat-square)](https://pypi.python.org/pypi/bitpay-py2/)
 [![Code Climate](https://img.shields.io/codeclimate/github/bitpay/bitpay-python-py2.svg?style=flat-square)](https://codeclimate.com/github/bitpay/bitpay-python-py2)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/bitpay/bitpay-python-py2.svg?style=flat-square)](https://scrutinizer-ci.com/g/bitpay/bitpay-python-py2/)
+[![Coveralls](https://img.shields.io/coveralls/bitpay/bitpay-python-py2.svg?style=flat-square)](https://coveralls.io/r/bitpay/bitpay-python-py2)
 
 This library is only compatible with Python 2. If you're using Python 3.x, please use our separate [bitpay-python](https://github.com/ionux/bitpay-python) library.
 
@@ -20,7 +21,7 @@ API Documentation is available on the [BitPay site](https://bitpay.com/api).
 
 ## Running the Tests
 
-Before running the behavior tests, you will need a test.bitpay.com account and you will need to set the local constants. 
+Before running the behavior tests, you will need a test.bitpay.com account and you will need to set the local constants.
 
 To set constants:
     > source tasks/set_constants.sh "https://test.bitpay.com" your@email yourpassword
@@ -30,7 +31,7 @@ To run unit tests:
 
 To run behavior tests:
     > behave
-    
+
 ## Found a bug?
 
 Let us know! Send a pull request or a patch. Questions? Ask! We're here to help. We will respond to all filed issues.

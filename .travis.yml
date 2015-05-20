@@ -8,5 +8,5 @@ install:
 script: 
   - nosetests --with-coverage --cover-package=bitpay --cover-html
   - behave
-after_sucess:
+after_success:
   - coveralls
