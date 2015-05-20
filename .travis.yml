@@ -8,6 +8,6 @@ install:
 script: 
   - nosetests
   - behave
-  - coverage run --source=bitpay setup.py nosetests
+  - coverage run --source=bitpay nosetests
 after_sucess:
   - coveralls
