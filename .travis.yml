@@ -8,5 +8,5 @@ install:
 script: 
   - nosetests
   - behave
-after_sucess:
+after_success:
   - codecov
