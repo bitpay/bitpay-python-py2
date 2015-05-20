@@ -21,7 +21,3 @@ Feature: pairing with bitpay
       | valid   | a1b2c3d  | BitPayBitPayError     | 500: Unable to create token |
       | invalid | a1b2c3d4 | BitPayArgumentError   | pairing code is not legal   |
 
-  Scenario: the client has a bad port configuration to a closed port
-    When the user fails to pair with BitPay because of an incorrect port
-    Then they will receive a BitPayConnectionError matching Connection refused 
-

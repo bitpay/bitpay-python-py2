@@ -67,19 +67,6 @@ def step_impl(context, code, valid):
       global exception
       exception = error
 
-@when(u'the user fails to pair with BitPay because of an incorrect port')
-def step_impl(context):
-  time.sleep(1)
-  badAddress = ROOT_ADDRESS.split(":")
-  badAddress = badAddress[0] + ":" + badAddress[1] + ":8239"
-  newclient = Client(api_uri=badAddress, insecure=True)
-  try:
-    newclient.pair_pos_client("1a2C3d4")
-    raise "That should totally not have worked"
-  except Exception as error:
-    global exception
-    exception = error
-
 @given(u'that a user knows an invoice id')
 def step_impl(context):
   global client
