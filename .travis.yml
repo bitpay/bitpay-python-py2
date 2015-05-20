@@ -6,8 +6,7 @@ install:
   - "pip install -r requirements.txt"
 # command to run tests
 script: 
-  - nosetests
+  - nosetests --with-coverage --cover-package=bitpay
   - behave
-  - coverage run --source=bitpay setup.py test
 after_sucess:
   - coveralls
