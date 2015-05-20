@@ -2,9 +2,12 @@
 
 Powerful, flexible, lightweight interface to the cryptographically secure BitPay Bitcoin Payment Gateway API.
 
-[![Supported Python versions](https://pypip.in/py_versions/bitpay_py2/badge.svg)](https://pypi.python.org/pypi/bitpay-py2/)
-[![Latest Version](https://pypip.in/version/bitpay_py2/badge.svg)](https://pypi.python.org/pypi/bitpay-py2/)
-[![](https://travis-ci.org/bitpay/bitpay-python-py2.svg?branch=master)](https://travis-ci.org/bitpay/bitpay-python-py2)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/bitpay/bitpay-python-py2/master/LICENSE.txt)
+[![Travis](https://img.shields.io/travis/bitpay/bitpay-python-py2.svg?style=flat-square)](https://travis-ci.org/bitpay/bitpay-python-py2)
+[![Latest Version](https://pypip.in/version/bitpay_py2/badge.svg?style=flat-square)](https://pypi.python.org/pypi/bitpay-py2/)
+[![Supported Python versions](https://pypip.in/py_versions/bitpay_py2/badge.svg?style=flat-square)](https://pypi.python.org/pypi/bitpay-py2/)
+[![Code Climate](https://img.shields.io/codeclimate/github/bitpay/bitpay-python-py2.svg?style=flat-square)](https://codeclimate.com/github/bitpay/bitpay-python-py2)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/bitpay/bitpay-python-py2.svg?style=flat-square)](https://scrutinizer-ci.com/g/bitpay/bitpay-python-py2/)
 
 This library is only compatible with Python 2. If you're using Python 3.x, please use our separate [bitpay-python](https://github.com/ionux/bitpay-python) library.
 
