@@ -3,12 +3,12 @@ from distutils.core import setup
 setup(
     name="bitpay-py2",
     packages=["bitpay"],
-    version="2.3.2",
+    version="2.3.3",
     description="Accept bitcoin with BitPay",
     author="Paul Daigle",
     author_email="integrations@bitpay.com",
-    url="https://github.com/bitpay/bitpay-python",
-    download_url="https://github.com/bitpay/bitpay-python-py2/tarball/v2.3.1",
+    url="https://github.com/bitpay/bitpay-python-py2",
+    download_url="https://github.com/bitpay/bitpay-python-py2/tarball/v2.3.3",
     keywords=["bitcoin", "payments", "crypto"],
     license="MIT License",
     classifiers=["Programming Language :: Python",
@@ -24,6 +24,8 @@ setup(
     long_description="""\
 Python Library for integrating with BitPay
 -------------------------------------
+
+This library is compatible with Python 2.7.8. It is not compatible with Python 3.
 
 This library is a simple way to integrate your application with
 BitPay for taking bitcoin payments. It exposes three basic
