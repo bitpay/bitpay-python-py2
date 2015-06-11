@@ -19,13 +19,13 @@ The bitpay library allows authenticating with BitPay, creating invoices, and ret
 
 Before pairing with BitPay.com, you'll need to log in to your BitPay account and navigate to /api-tokens. Generate a new pairing code and use it in the next step. You can try out various functions using the Python REPL. In this example, it's assumed that we are working against the bitpay test server and have generated the pairing code "abcdefg".
 
-    > from bitpay_client import Client
+    > from bitpay.bitpay_client import Client
     > client = Client(api_uri="https://test.bitpay.com") #if api_uri is not passed, it defaults to "https://bitpay.com"
     > client.pair_pos_client("abcdefg")
 
 To perform a second pairing method - client-side pairing - you will need to specify the facade you want to create and call create_token(). The JSON response will include a pairing code to append to the end of the API access request URL specified in the documentation.  For example, if you wanted to create a token for the merchant facade:
 
-    > from bitpay_client import Client
+    > from bitpay.bitpay_client import Client
     > client = Client(api_uri="https://test.bitpay.com")
     > client.create_token("merchant")
 
