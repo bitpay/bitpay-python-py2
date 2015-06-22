@@ -95,7 +95,6 @@ class Client:
         """
         GET /tokens
         https://bitpay.com/api#resource-Tokens
-        note: Verify header x-signature/x-identity pair
         """
         xidentity = key_utils.get_compressed_public_key_from_pem(self.pem)
         xsignature = key_utils.sign(self.uri + "/tokens", self.pem)
