@@ -18,6 +18,10 @@ class Client:
         self.user_agent = 'bitpay-python'
 
     def pair_pos_client(self, code):
+        """
+        POST /tokens
+        https://bitpay.com/api#resource-Tokens
+        """
         if re.match("^\w{7,7}$", code) is None:
             raise BitPayArgumentError("pairing code is not legal")
         payload = {'id': self.client_id, 'pairingCode': code}
@@ -34,6 +38,10 @@ class Client:
         self.response_error(response)
 
     def create_token(self, facade):
+        """
+        POST /tokens
+        https://bitpay.com/api#resource-Tokens
+        """
         payload = {'id': self.client_id, 'facade': facade}
         headers = {"content-type": "application/json",
                    "accept": "application/json", "X-accept-version": "2.0.0"}
@@ -48,6 +56,10 @@ class Client:
         self.response_error(response)
 
     def create_invoice(self, params):
+        """
+        POST /invoices
+        https://bitpay.com/api#resource-Invoices
+        """
         self.verify_invoice_params(params['price'], params['currency'])
         payload = json.dumps(params)
         uri = self.uri + "/invoices"
@@ -66,6 +78,10 @@ class Client:
         self.response_error(response)
 
     def get_invoice(self, invoice_id):
+        """
+        GET /invoices/:invoiceId
+        https://bitpay.com/api#resource-Invoices
+        """
         uri = self.uri + "/invoices/" + invoice_id
         try:
             response = requests.get(uri, verify=self.verify)
@@ -76,6 +92,11 @@ class Client:
         self.response_error(response)
 
     def verify_tokens(self):
+        """
+        GET /tokens
+        https://bitpay.com/api#resource-Tokens
+        note: Verify header x-signature/x-identity pair
+        """
         xidentity = key_utils.get_compressed_public_key_from_pem(self.pem)
         xsignature = key_utils.sign(self.uri + "/tokens", self.pem)
         headers = {"content-type": "application/json",
