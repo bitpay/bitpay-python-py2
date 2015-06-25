@@ -13,7 +13,7 @@ Powerful, flexible, lightweight interface to the cryptographically secure BitPay
 This library is only compatible with Python 2. If you're using Python 3.x, please use our separate [bitpay-python](https://github.com/ionux/bitpay-python) library.
 
 ## Getting Started
-To get up and running with this library quickly, see the GUIDE here: (https://github.com/bitpay/bitpay-python-py2/blob/master/GUIDE.md)
+To get up and running with this library quickly, see getting started guied: (https://github.com/bitpay/bitpay-python-py2/blob/master/GUIDE.md)
 
 ## API Documentation
 
