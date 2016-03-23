@@ -1,13 +1,14 @@
-from bitpay_exceptions import *
-import bitpay_key_utils as bku
-from bitpay_client import *
+from bitpay.bitpay_exceptions import *
+import bitpay.bitpay_key_utils as bku
+from bitpay.bitpay_client import *
 import pprint
 import requests
 import json
 import re
 import os.path
 
-API_HOST = "https://test.bitpay.com"
+#API_HOST = "https://bitpay.com" #for production, live bitcoin
+API_HOST = "https://test.bitpay.com" #for testing, testnet bitcoin
 KEY_FILE = "/tmp/key.priv"
 TOKEN_FILE = "/tmp/token.priv"
 
@@ -56,7 +57,7 @@ print "continuing if we can..."
 
 print "Attempting to get settlements..."
 
-def get_stuff_from_bitpays_restful_api(client, uri):
+def get_stuff_from_bitpays_restful_api(client, uri, token):
     payload = "?token=%s" % token
     xidentity = bku.get_compressed_public_key_from_pem(client.pem)
     xsignature = bku.sign(uri + payload, client.pem)
@@ -78,7 +79,7 @@ def get_stuff_from_bitpays_restful_api(client, uri):
 GET /settlements
 https://bitpay.com/api#resource-Settlements
 """
-settlements = get_stuff_from_bitpays_restful_api(client, client.uri + "/settlements/")
+settlements = get_stuff_from_bitpays_restful_api(client, client.uri + "/settlements/", token)
 pp.pprint("These are your settlements: %s" % settlements)
 
 
@@ -87,7 +88,7 @@ print "Now that we have settlements, let's do ledger pages..."
 GET /ledgers
 https://bitpay.com/api#resource-Ledgers
 """
-ledgers = get_stuff_from_bitpays_restful_api(client, client.uri + "/ledgers/")
+ledgers = get_stuff_from_bitpays_restful_api(client, client.uri + "/ledgers/", token)
 pp.pprint("These are your ledgers: %s" % ledgers)
 
 
