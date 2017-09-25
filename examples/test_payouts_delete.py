@@ -117,7 +117,7 @@ payoutBatch = get_from_bitpay_api(client, "https://test.bitpay.com/payouts/"+bat
 pp.pprint(payoutBatch)
 
 # now use the token received from the GET payout batch to cancel the payout batch
-token = "3HLhStPD9h58i1FW54cuYnS492uYSywQG6rBBJcD9zGMp5HK9ANes33wpGrQnFsuoX"
+token = payoutBatch["token"]
 
 print("Deleting payout batch " + batchId)
 response = delete_from_bitpay_api(client, "https://test.bitpay.com/payouts/"+batchId, token)
