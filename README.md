@@ -1,3 +1,5 @@
+# This repository is no longer maintained, please refer to the latest version [Here](https://github.com/bitpay/bitpay-python)
+
 # BitPay Library for Python 2
 
 Powerful, flexible, lightweight interface to the cryptographically secure BitPay Bitcoin Payment Gateway API.
