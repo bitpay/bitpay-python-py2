@@ -26,7 +26,7 @@ class Client:
             raise BitPayArgumentError("pairing code is not legal")
         payload = {'id': self.client_id, 'pairingCode': code}
         headers = {"content-type": "application/json",
-                   "accept": "application/json", "X-accept-version": "2.0.0"}
+                   "X-accept-version": "2.0.0"}
         try:
             response = requests.post(self.uri + "/tokens", verify=self.verify,
                                      data=json.dumps(payload), headers=headers)
@@ -44,7 +44,7 @@ class Client:
         """
         payload = {'id': self.client_id, 'facade': facade}
         headers = {"content-type": "application/json",
-                   "accept": "application/json", "X-accept-version": "2.0.0"}
+                   "X-accept-version": "2.0.0"}
         try:
             response = requests.post(self.uri + "/tokens", verify=self.verify,
                                      data=json.dumps(payload), headers=headers)
@@ -66,7 +66,7 @@ class Client:
         xidentity = key_utils.get_compressed_public_key_from_pem(self.pem)
         xsignature = key_utils.sign(uri + payload, self.pem)
         headers = {"content-type": "application/json",
-                   "accept": "application/json", "X-Identity": xidentity,
+                   "X-Identity": xidentity,
                    "X-Signature": xsignature, "X-accept-version": "2.0.0"}
         try:
             response = requests.post(uri, data=payload, headers=headers,
@@ -99,7 +99,7 @@ class Client:
         xidentity = key_utils.get_compressed_public_key_from_pem(self.pem)
         xsignature = key_utils.sign(self.uri + "/tokens", self.pem)
         headers = {"content-type": "application/json",
-                   "accept": "application/json", "X-Identity": xidentity,
+                   "X-Identity": xidentity,
                    "X-Signature": xsignature, "X-accept-version": '2.0.0'}
         response = requests.get(self.uri + "/tokens", headers=headers,
                                 verify=self.verify)
